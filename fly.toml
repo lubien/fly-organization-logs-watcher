@@ -1,0 +1,29 @@
+# fly.toml app configuration file generated for fly-nats-ex-devsnorte on 2024-03-06T18:33:40-03:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'fly-nats-ex-devsnorte'
+primary_region = 'gru'
+
+[env]
+  ORGANIZATION_SLUG="devsnorte"
+  DATABASE_PATH="/data/app_logs.db"
+
+[mounts]
+  source = 'db_data'
+  destination = "/data"
+  initial_size = '1GB'
+  auto_extend_size_increment = '1'
+  auto_extend_size_threshold = 80
+
+# [http_service]
+#   internal_port = 8080
+#   force_https = true
+#   auto_stop_machines = true
+#   auto_start_machines = true
+#   min_machines_running = 0
+#   processes = ['app']
+
+[[vm]]
+  size = 'shared-cpu-1x'

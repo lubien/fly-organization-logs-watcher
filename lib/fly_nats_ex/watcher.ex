@@ -1,6 +1,5 @@
 defmodule FlyNatsEx.Watcher do
   use GenServer
-  require Logger
   alias FlyNatsEx.Logs
   alias FlyNatsEx.DbConnection
   alias FlyNatsEx.Subscription
@@ -18,9 +17,7 @@ defmodule FlyNatsEx.Watcher do
   end
 
   def handle_info(log, state) do
-    Logger.info(inspect(log))
     DbConnection.insert_log(log)
-
     {:noreply, state}
   end
 end

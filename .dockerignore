@@ -1,0 +1,64 @@
+# flyctl launch added from .elixir-tools/.gitignore
+.elixir-tools/**/*
+
+# flyctl launch added from .elixir_ls/.gitignore
+.elixir_ls/**/*
+
+# flyctl launch added from .gitignore
+# The directory Mix will write compiled artifacts to.
+_build
+
+# If you run "mix test --cover", coverage assets end up here.
+cover
+
+# The directory Mix downloads your dependencies sources to.
+deps
+
+# Where third-party dependencies like ExDoc output generated docs.
+doc
+
+# Ignore .fetch files in case you like to edit your project deps locally.
+.fetch
+
+# If the VM crashes, it generates a dump, let's ignore it too.
+**/erl_crash.dump
+
+# Also ignore archive artifacts (built via "mix archive.build").
+**/*.ez
+
+# Ignore package tarball (built via "mix hex.build").
+**/fly_nats_ex-*.tar
+
+# Temporary files, for example, from tests.
+tmp
+
+priv/*.db
+
+# flyctl launch added from deps/gnat/.gitignore
+# The directory Mix will write compiled artifacts to.
+deps/gnat/_build
+
+# If you run "mix test --cover", coverage assets end up here.
+deps/gnat/cover
+
+# The directory Mix downloads your dependencies sources to.
+deps/gnat/deps
+
+# Where 3rd-party dependencies like ExDoc output generated docs.
+deps/gnat/doc
+
+# Ignore .fetch files in case you like to edit your project deps locally.
+deps/gnat/.fetch
+
+# If the VM crashes, it generates a dump, let's ignore it too.
+deps/gnat/**/erl_crash.dump
+
+# Also ignore archive artifacts (built via "mix archive.build").
+deps/gnat/**/*.ez
+
+# Do not commit the counterexamples stored during property testing
+deps/gnat/test/counter_examples
+
+# ASDF file to for specifying which erlang/elixir version to use for local development
+deps/gnat/**/.tool-versions
+fly.toml
