@@ -6,7 +6,7 @@ defmodule FlyNatsEx.MixProject do
       app: :fly_nats_ex,
       version: "0.1.0",
       elixir: "~> 1.16",
-      start_permanent: Mix.env() == :prod,
+      start_permanent: true,
       deps: deps()
     ]
   end
@@ -22,7 +22,8 @@ defmodule FlyNatsEx.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:gnat, git: "https://github.com/lubien/nats.ex.git"}
+      {:gnat, git: "https://github.com/lubien/nats.ex.git"},
+      {:jason, "~> 1.4"}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
     ]
