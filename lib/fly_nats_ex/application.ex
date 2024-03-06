@@ -9,7 +9,8 @@ defmodule FlyNatsEx.Application do
   def start(_type, _args) do
     children = [
       # Starts a worker by calling: FlyNatsEx.Worker.start_link(arg)
-      # {FlyNatsEx.Worker, arg}
+      {FlyNatsEx.DbConnection, []},
+      {FlyNatsEx.Watcher, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
