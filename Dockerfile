@@ -55,7 +55,7 @@ RUN mix release
 # the compiled release and other runtime necessities
 FROM ${RUNNER_IMAGE}
 
-RUN apt-get update -y && apt-get install -y libstdc++6 openssl libncurses5 locales \
+RUN apt-get update -y && apt-get install -y libstdc++6 openssl libncurses5 locales ca-certificates fuse3 sqlite3 \
   && apt-get clean && rm -f /var/lib/apt/lists/*_*
 
 # Set the locale
@@ -66,16 +66,17 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 WORKDIR "/app"
-RUN chown nobody /app
 
 # set runner ENV
 ENV MIX_ENV="prod"
 
 # Only copy the final release from the build stage
-COPY --from=builder --chown=nobody:root /app/_build/${MIX_ENV}/rel/fly_nats_ex ./
+COPY --from=builder /app/_build/${MIX_ENV}/rel/fly_nats_ex ./
 
-USER nobody
+RUN mkdir /litefs
+COPY --from=flyio/litefs:0.5 /usr/local/bin/litefs /usr/local/bin/litefs
+COPY etc/litefs.yml /etc/litefs.yml
 
-CMD ["/app/bin/fly_nats_ex", "start", "--no-halt"]
+ENTRYPOINT litefs mount
 # Appended by flyctl
 ENV ERL_AFLAGS "-proto_dist inet6_tcp"

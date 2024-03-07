@@ -8,7 +8,7 @@ primary_region = 'gru'
 
 [env]
   ORGANIZATION_SLUG="devsnorte"
-  DATABASE_PATH="/data/app_logs.db"
+  DATABASE_PATH="/litefs/app_logs.db"
 
 [mounts]
   source = 'db_data'
