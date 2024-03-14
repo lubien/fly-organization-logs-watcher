@@ -33,6 +33,6 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            "lubien/organization-logs-watcher:${{ steps.previoustag.outputs.tag }}"
+            "lubien/fly-organization-logs-watcher:${{ steps.previoustag.outputs.tag }}"
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
